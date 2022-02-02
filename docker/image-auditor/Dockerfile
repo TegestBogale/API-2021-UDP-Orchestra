@@ -1,9 +1,11 @@
-FROM node:16.13.1
-MAINTAINER Tegest Bogale, Farouk Ferchichi
+FROM node:14.17
+LABEL authors="FERCHICHI Ahmed Farouk, 	Tegset Bogale"
 
 #
-# When we build the image, we copy the executable jar in the image file system.
+# When we build the image, we copy the sources in the image file system. 
 #
 COPY src /opt/app/
 
-ENTRYPOINT ["node", "/opt/app/auditor.js"]
+RUN npm install
+
+CMD ["node", "/opt/app/auditor.js"]
